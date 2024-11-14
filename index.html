@@ -6,8 +6,26 @@
     <title>Test</title>
 </head>
 <body>
-    Nice
-    <img src="lake_data1/1/figure2.jpg" alt="NA" width="30%" height="45%">
-    <iframe width="512px" height="512px" src="https://earthengine.google.com/iframes/timelapse_player_embed.html#v={{ lake_cen }},12.699,latLng&t=0.39&ps=10&bt=19840101&et=20221231" frameborder="0" allowfullscreen></iframe>
+    <img src="lake_data1/0/figure2.jpg" alt="NA" id="figure2" width="30%" height="45%">
+    <iframe width="512px" height="512px" id="iframeLake" rc="https://earthengine.google.com/iframes/timelapse_player_embed.html#v={{ lake_cen }},12.699,latLng&t=0.39&ps=10&bt=19840101&et=20221231" frameborder="0" allowfullscreen></iframe>
+
+<script>
+
+var randomIdx = Math.floor(Math.random() * 50)
+document.getElementById("figure2").src="lake_data1/".concat(randomIdx.toString()).concat("/figure2.jpg")
+
+url = "https://raw.githubusercontent.com/lakmalnd/tlakecolor/refs/heads/main/lake_data1/".concat(randomIdx.toString()).concat("/lake_cen.json")
+
+
+fetch(url)
+.then(res => res.json())
+.then(out =>
+  document.getElementById("iframeLake").src="https://earthengine.google.com/iframes/timelapse_player_embed.html#v=".concat( (out['coordinates'][1]).toString().concat(",").concat(out['coordinates'][0].toString()) ).concat(",12.699,latLng&t=0.39&ps=10&bt=19840101&et=20221231"))
+.catch(err => console.log(err));
+
+
+</script>
+
+	
 </body>
 </html>
