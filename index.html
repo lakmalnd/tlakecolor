@@ -6,12 +6,15 @@
     <title>Test</title>
 </head>
 <body>
+	<img src="lake_data1/0/figure1.jpg" alt="NA" id="figure1" width="30%" height="45%">
     <img src="lake_data1/0/figure2.jpg" alt="NA" id="figure2" width="30%" height="45%">
+	<br>
     <iframe width="512px" height="512px" id="iframeLake" rc="https://earthengine.google.com/iframes/timelapse_player_embed.html#v={{ lake_cen }},12.699,latLng&t=0.39&ps=10&bt=19840101&et=20221231" frameborder="0" allowfullscreen></iframe>
 
 <script>
 
-var randomIdx = Math.floor(Math.random() * 50)
+var randomIdx = Math.floor(Math.random() * 250)
+document.getElementById("figure1").src="lake_data1/".concat(randomIdx.toString()).concat("/figure1.jpg")
 document.getElementById("figure2").src="lake_data1/".concat(randomIdx.toString()).concat("/figure2.jpg")
 
 url = "https://raw.githubusercontent.com/lakmalnd/tlakecolor/refs/heads/main/lake_data1/".concat(randomIdx.toString()).concat("/lake_cen.json")
